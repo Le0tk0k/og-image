@@ -49,29 +49,7 @@ function getCss(theme: string, fontSize: string) {
         text-align: center;
         align-items: center;
         justify-content: center;
-    }
-
-    code {
-        color: #D400FF;
-        font-family: 'Vera', 'M PLUS 1p';
-        white-space: pre-wrap;
-        letter-spacing: -5px;
-    }
-
-    code:before, code:after {
-        content: '\`';
-    }
-
-    .logo-wrapper {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        justify-items: center;
-    }
-
-    .logo {
-        margin: 0 75px;
+        background-color: #FF8D01;
     }
 
     .plus {
@@ -79,9 +57,25 @@ function getCss(theme: string, fontSize: string) {
         font-family: Times New Roman, Verdana;
         font-size: 100px;
     }
+    
+    .container {
+        background-color: #ffffff;
+        width: 904px;
+        height: 465px;
+        margin: 60px
+        position: relative;
+        border: 4px solid #000;
+    }
 
-    .spacer {
-        margin: 150px;
+    .logo-wrapper {
+        text-align: left;
+    }
+    
+    .icon {
+        border-radius: 50%;
+        position: absolute;
+        bottom: 70px;
+        left: 80px;
     }
 
     .emoji {
@@ -97,6 +91,7 @@ function getCss(theme: string, fontSize: string) {
         font-style: normal;
         color: ${foreground};
         line-height: 1.8;
+        margin-top: 180px;
     }`;
 }
 
@@ -111,12 +106,17 @@ export function getHtml(parsedReq: ParsedRequest) {
         ${getCss(theme, fontSize)}
     </style>
     <body>
-        <div>
-            <div class="spacer">
+        <div class="container">
             <div class="heading">${emojify(
                 md ? marked(text) : sanitizeHtml(text)
             )}
             </div>
+            <img 
+                class="icon"
+                alt="icon"
+                src="https://le0tk0k.dev/images/ogp.png"
+                width="100px"
+            />
         </div>
     </body>
 </html>`;
